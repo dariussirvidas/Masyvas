@@ -12,6 +12,10 @@ public class Main {
         swap(A, getIndexMin(A), getIndexMax(A));
         System.out.println("Masyvas po didžiausio ir mažiausio elementų sukeitimo:");
         printArray(A);
+
+        int maxOddPositive = getMaxOddPositive(A);
+        if(maxOddPositive == -1) System.out.println("Masyve teigiamų nelyginių skaičių nėra");
+        else System.out.println("Didžiausias teigiamas, nelyginis masyvo elementas: " + maxOddPositive);
     }
 
     /**
@@ -121,5 +125,19 @@ public class Main {
         int temp = array[index1];
         array[index1] = array[index2];
         array[index2] = temp;
+    }
+
+    /**
+     * finds the largest positive, odd value in an array
+     * @param array the array to be searched
+     * @return max odd positive value or -1 if no positive odd values found
+     */
+    private static int getMaxOddPositive(int[] array) {
+        int max = -1;
+        for (int value : array) {
+            if ((value % 2 == 1) && (value > max))
+                max = value;
+        }
+        return max;
     }
 }
